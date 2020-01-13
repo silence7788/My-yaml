@@ -1,0 +1,11 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: test01
+subsets:
+- addresses:              
+  - ip: 192.168.6.50
+  ports:                  
+  - port: 38083
+    protocol: TCP
+

@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: all-permission-binding
+subjects:
+- kind: User
+  name: songss
+  apiGroup: "" 
+roleRef:
+  apiGroup: ""
+  kind: ClusterRole
+  name: all-permission

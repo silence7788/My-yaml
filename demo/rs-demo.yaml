@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: myapp
+  namespace: default
+  labels: 
+    app: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      env: test
+      version: alphe
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        env: test
+        version: alphe
+    spec:
+      containers:
+      - name: http
+        ports:
+        - name: http-protocal
+          containerPort: 80
+        image: ikubernetes/myapp:v1
+        imagePullPolicy: IfNotPresent

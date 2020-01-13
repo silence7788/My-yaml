@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat2
+  namespace: aabb
+  selfLink: /apis/apps/v1/namespaces/aabb/deployments/tomcat2
+  uid: b87e41fc-22d5-11ea-b476-0050569c60b8
+  resourceVersion: '4589946'
+  generation: 1
+  creationTimestamp: '2019-12-20T03:06:30Z'
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-aabb-tomcat2
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    field.cattle.io/creatorId: user-vllp4
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-aabb-tomcat2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-aabb-tomcat2
+      annotations:
+        cattle.io/timestamp: '2019-12-20T03:06:20Z'
+        workload.cattle.io/state: '{"bm9kZTE2OS5ib2Nsb3VkLmNvbQ==":"c-n7jpn:machine-b7crw"}'
+    spec:
+      containers:
+      - name: tomcat2
+        image: registry163.bocloud.com:5000/public/tomcat:8.5
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        imagePullPolicy: Always
+        securityContext:
+          capabilities: {}
+          privileged: false
+          runAsNonRoot: false
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: false
+          procMount: Default
+        stdin: true
+        tty: true
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      nodeName: node169.bocloud.com
+      hostNetwork: true
+      securityContext: {}
+      schedulerName: default-scheduler
+      dnsConfig: {}
+status:
+  observedGeneration: 1
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+  - type: Progressing
+    status: 'True'
+    lastUpdateTime: '2019-12-20T03:07:10Z'
+    lastTransitionTime: '2019-12-20T03:06:31Z'
+    reason: NewReplicaSetAvailable
+    message: ReplicaSet "tomcat2-c4f77497f" has successfully progressed.
+  - type: Available
+    status: 'True'
+    lastUpdateTime: '2019-12-23T21:04:53Z'
+    lastTransitionTime: '2019-12-23T21:04:53Z'
+    reason: MinimumReplicasAvailable
+    message: Deployment has minimum availability.

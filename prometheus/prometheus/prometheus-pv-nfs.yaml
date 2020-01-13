@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+  namespace: kube-system
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes: ["ReadWriteMany","ReadOnlyMany","ReadWriteOnce"] 
+  nfs:
+    path: /data/volumes/prometheus
+    server: 192.168.4.23

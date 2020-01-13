@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafana-pv
+  namespace: kube-system
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes: ["ReadWriteMany","ReadOnlyMany","ReadWriteOnce"] 
+  nfs:
+    path: /data/volumes/grafana
+    server: 192.168.4.23
