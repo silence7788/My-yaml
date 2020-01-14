@@ -93,6 +93,7 @@ spec:
               mountPath: /data
               subPath: ""
       terminationGracePeriodSeconds: 300
+      hostNetwork: true    #解决网络不通的问题
       volumes:
         - name: config-volume
           configMap:
